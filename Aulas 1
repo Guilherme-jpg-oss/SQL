@@ -1,0 +1,20 @@
+-- SELECT * FROM senso;
+
+-- Usando operador =
+
+SELECT * FROM senso
+WHERE cod_uf = '35'
+AND ano = '2014';
+
+-- Mais um explo usando o operador =
+
+SELECT * FROM senso
+WHERE nome_mun = 'Dourado'
+AND cod_uf = '35'
+AND ano = '2014';
+
+-- Usando operador >
+
+SELECT * FROM senso
+WHERE populacao > 100000
+AND ano = '2014';
