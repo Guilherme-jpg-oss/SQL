@@ -1,0 +1,72 @@
+-- Operador WHERE
+
+SELECT *
+FROM senso
+WHERE nome_mun='Jundiai'
+AND ano = '2014';
+
+-- Operador AND
+
+SELECT *
+FROM senso
+WHERE cod_uf = '35'
+AND populacao > 50000
+AND ano = '2014';
+
+-- Operador BETWEEN
+
+SELECT * FROM senso
+WHERE cod_uf = '35'
+AND populacao BETWEEN 5000 AND 10000
+AND ano = '2014'
+ORDER BY populacao DESC;
+
+-- Operador IN
+
+SELECT * FROM senso
+WHERE cod_uf IN  ('35', '12')
+AND ano = '2014';
+
+-- Operador NOT IN
+
+SELECT * FROM senso
+WHERE cod_uf not IN  ('35', '12')
+AND ano = '2014';
+
+-- LIKE localiza valores que contenham "OR" em qualquer lugar
+
+SELECT * FROM senso
+WHERE nome_mun LIKE  ('%or%')
+AND ano = '2014';
+
+-- LIKE localiza valores que contenham "R" em qualquer lugar
+
+SELECT * FROM senso
+WHERE nome_mun LIKE '%_r%'
+AND ano = '2014';
+
+-- LIKE localiza valores que começam com "a" e possuem pelo menos três caracteres de comprimento
+
+SELECT * FROM senso
+WHERE nome_mun  LIKE  'a_%_%'
+AND ano = '2014';
+
+-- LIKE localiza valores que começam com "a" e terminam com "o"
+
+SELECT * FROM senso
+WHERE nome_mun  LIKE  'a%o'
+AND ano = '2014';
+
+-- Operador LIKE coringa
+
+SELECT * FROM senso
+WHERE nome_mun LIKE  '_ra%'
+AND ano = '2014';
+
+-- Operador NOT
+
+SELECT ano,cod_uf,estado,nome_mun,populacao FROM senso
+WHERE nome_mun NOT LIKE ('A%')
+AND cod_uf = '35'
+AND NOT populacao < 40000
+AND ano = '2014';
