@@ -1,0 +1,62 @@
+-- DDL criação de tabela para exercícioos
+
+USE curso;
+
+CREATE TABLE funcionarios
+(
+id INT NOT NULL AUTO_INCREMENT,
+nome VARCHAR(50) NOT NULL,
+salario DECIMAL(10,2),
+setor VARCHAR(30),
+PRIMARY KEY(id)
+);
+
+-- DML select
+-- Exemplo de Select
+
+SELECT *
+FROM funcionarios;
+
+-- Outro exmplo de select
+
+SELECT nome,salario,setor AS depto
+FROM funcionarios;
+
+-- DML Insert
+
+INSERT INTO funcionarios (nome,salario,setor) VALUES
+('Joao',1000,''),('Jose',2000,''),('Alexandre',3000,'');
+-- OU
+INSERT INTO funcionarios (nome,salario) VALUES ('Pedro',1000);
+INSERT INTO funcionarios (nome,salario) VALUES ('Cleiton',1080);
+
+-- Simulando um erro de inserção de valor decimal (salário do funcionário)
+
+INSERT INTO funcionarios (nome,salario) VALUES ('Cleiton','dadadadadASDFEF');
+
+-- DML update
+
+UPDATE funcionrios SET salario = 1500
+WHERE id=1;
+
+-- OU aumento de 50% sobre o salario atual
+
+UPDATE funcionarios SET salario=salario*1.5
+WHERE id='2';
+
+-- Exemplo de update com mais de um campo
+
+UPDATE funcionarios SET salario=salario*1.5,setor='TI'
+WHERE id<>'1';
+
+-- DML Delete
+
+DELETE
+FROM funcionarios
+WHERE id='1';
+
+-- Comando de DML Delete evidenciando a exclusão
+
+SELECT *
+FROM funcionarios
+-- WHERE id='1';
