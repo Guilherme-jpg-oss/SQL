@@ -1,0 +1,68 @@
+-- DDL criando tabela
+
+CREATE TABLE funcionario
+(		 matricula INT NOT NULL PRIMARY key AUTO_INCREMENT,
+		 nome 	  VARCHAR(50) NOT NULL,
+		 sobrenome VARCHAR(50) NOT NULL,
+		 endereço  VARCHAR(50),
+		 cidade    VARCHAR(50),
+		 pais      VARCHAR(25),
+		 data_nasc DATETIME
+		);
+
+-- DDl criando tabela com chave estrangeira
+
+CREATE TABLE salario
+(
+	matricula INT NOT NULL,
+	salario DECIMAL(10,2) NOT NULL,
+	FOREIGN KEY(matricula) REFERENCES funcionario(matricula)
+	);
+	
+-- DDl criação de tabela com chave primária
+
+CREATE TABLE audit_salario
+(
+transacao INT NOT NULL AUTO_INCREMENT,
+matricula INT NOT NULL,
+data_trans DATETIME NOT NULL,
+sal_antigo DECIMAL(10,2),
+sal_novo DECIMAL(10,2),
+usuario VARCHAR(20) NOT NULL,
+PRIMARY KEY(transacao),
+FOREIGN KEY(matricula) REFERENCES funcionario(matricula)
+);
+
+-- DDL criacao index
+
+CREATE INDEX ix_func1 ON funcionario(data_nasc)
+
+-- DDL criacao index
+
+CREATE INDEX ix_func2 ON funcionario(cidade,pais)
+
+-- Adicionar um novo campo na tabela funcionario
+
+ALTER TABLE funcionario ADD genero CHAR(1);
+
+-- SELECT * FROM funcionario
+
+-- Renomendo campo/colunas da tabela
+
+ALTER TABLE funcionario CHANGE genero sexo CHAR(1);
+
+-- Retornando situação anterior
+
+ALTER TABLE funcionario CHANGE sexo genero CHAR(1);
+
+-- Renomendo tabelas
+
+RENAME TABLE funcionario TO pessoa;
+
+-- Retornando para situação anterior
+
+RENAME TABLE pessoa TO funcionario;
+
+-- DDL para adicionar coluna na tab senso
+ 
+ ALTER TABLE senso ADD id INT; 
