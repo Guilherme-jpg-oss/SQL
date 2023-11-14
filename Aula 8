@@ -1,0 +1,71 @@
+-- DDL para adicionar coluna tab no senso
+
+ALTER TABLE senso ADD id INT;
+
+-- DDL para adicionar chave primaria na tab senso auto_incremente
+
+ALTER TABLE senso MODIFY COLUMN id INT AUTO_INCREMENT PRIMARY KEY;
+
+-- SELECT * FROM senso;
+
+-- Alterar tipo de coluna
+
+ALTER TABLE funcionario MODIFY COLUMN endereco VARCHAR(30);
+
+-- Excluindo campo da coluna
+
+ALTER TABLE funcionario DROP COLUMN genero;
+
+-- Alterar Engine da tabela
+
+ALTER TABLE senso
+ENGINE = MYISAM;
+
+-- DDL criação de database
+
+CREATE DATABASE teste;
+
+-- Excluindo database
+
+DROP DATABASE teste;
+
+-- Excluindo tabela
+
+DROP TABLE salario;
+
+-- Criação de view
+
+CREATE VIEW v_funcionario
+AS
+SELECT * FROM funcionarios
+
+-- Excluindo view
+
+DROP VIEW v_funcionario;
+
+-- Excluindo um index
+
+DROP INDEX ix_func1 ON funcionario;
+
+-- Criando index
+
+CREATE INDEX ix_func1 ON funcionarios (NOME)
+
+-- Criando PROCEDURE
+
+DELIMITER $$
+CREATE PROCEDURE proc_quadrado (INOUT numero INT)
+BEGIN
+SET numero = numero * numero;
+END $$
+DELIMITER;
+
+-- Execuntando PROCEDURE
+
+SET @valor = 5;
+CALL proc_quadrado (@valor);
+SELECT @valor;
+
+-- Excluindo PROCEDURE
+
+DROP PROCEDURE proc_quadrado;
