@@ -1,0 +1,64 @@
+-- Excluinda PROCEDURE
+
+DROP FUNCTION func_salario;
+
+-- Excluindo uma Trigger
+
+DROP TRIGGER trig_func_salario;
+
+-- DDL Truncate
+
+TRUNCATE TABLE senso;
+
+-- DDL Truncate verificando registros
+
+SELECT * FROM funcionarios
+
+-- Criando tabela temporária BK em tabela temporária
+
+CREATE TEMPORARY TABLE tmp_funcionarios
+(
+ind INT,
+nome VARCHAR(50),
+salario DECIMAL(10,2),
+setor VARCHAR(30)
+)
+
+-- Fazendo BK na tabela temporária
+
+INSERT INTO tmp_funcionarios
+SELECT * FROM funcionarios
+
+-- Verificando BK na tabela temporária
+
+SELECT * FROM tmp_funcionarios
+
+-- Truncate na tabela funcionários  -- Apagando registros
+
+TRUNCATE funcionarios;
+
+SELECT * FROM funcionarios;
+
+-- Recuperar dados na tabela temp
+-- Desativar auto_increment da tabela funcionarios
+
+ALTER TABLE funcionarios CHANGE id id INT UNSIGNED NOT NULL;
+
+-- Recuperando dados do BK temporário
+
+INSERT INTO funcionarios
+SELECT * FROM tmp_funcionarios
+
+SELECT * FROM funcionarios
+
+-- Retornando o auto_increment
+
+ALTER TABLE funcionarios MODIFY COLUMN id INT AUTO_INCREMENT;
+
+-- Testando o auto_increment
+
+INSERT INTO funcionarios (nome,salario) VALUES ('Leopoldo', 1000);
+
+-- Evidenciando a consulta do novo funcionário inserido
+
+SELECT * FROM funcionarios
