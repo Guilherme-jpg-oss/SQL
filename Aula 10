@@ -1,0 +1,61 @@
+-- Parte 1 CONCEDE-GRANT
+-- Criar um login "ALUNO" e dar permissão no banco e objetos
+
+-- Concedendo acesso de atualização para aluno
+GRANT UPDATE ON funcionarios TO 'ALUNO'@'localhost';
+
+-- Concedendo acesso de update para aluno em todos os objetos
+
+GRANT UPDATE ON *.* TO 'ALUNO'@'localhost';
+
+-- Concedendo acesso de delete para aluno
+
+GRANT DELETE ON funcionarios TO 'ALUNO'@'localhost';
+
+-- Conceder acesso ao delete para aluno em todos os objetos
+
+GRANT DELETE ON *.* TO 'ALUNO'@'localhost';
+
+-- Concedendo acesso de insert para aluno
+
+GRANT INSERT ON funcionarios TO 'ALUNO'@'localhost';
+
+-- Concedendo acesso de select e insert para o aluno
+
+GRANT SELECT, INSERT ON funcionarios TO 'ALUNO'@'localhost';
+
+-- Concedendo select com limitações de campo
+
+GRANT SELECT (nome, setor) ON funcionarios TO 'ALUNO'@'localhost';
+
+-- Concedendo acesso para executar proc proc_quadrado para aluno
+
+GRANT EXECUTE ON PROCEDURE TESTE.proc_quadrado TO 'ALUNO'@'localhost';
+
+-- Concedendo todos os acessos a todos os objetos na tabela funcionários
+
+GRANT ALL PRIVILEGES ON funcionarios TO 'ALUNO'@'localhost'
+
+-- Concede todos os privilegios a objetos no banco de dados
+
+GRANT ALL PRIVILEGES ON *.* TO 'ALUNO'@'localhost';
+
+-- Recarregando privilégios
+
+FLUSH PRIVILEGES;
+
+-- Verificando acessos de usuários
+
+SELECT * FROM mysql.user WHERE USER='ALUNO';
+
+-- COMANDOS DE REVOGAÇÃO DE ACESSO DE UM USUÁRIO
+-- Nega acesso de atualização para aluno
+
+REVOKE UPDATE ON funcionarios FROM 'ALUNO'@'localhost';
+
+FLUSH PRIVILEGES;
+
+/* Basicamente nós usamos o comando de REVOKE no lugar do comando GRANT que
+escremos acima, dessa maneira ele vai REMOVER OS ACESSOS do usuário selecionado,
+no caso do exemplo, o ALUNO.
+*/
