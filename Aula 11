@@ -1,0 +1,49 @@
+-- Craindo tabela de teste
+
+CREATE TABLE cadastro
+(
+  nome VARCHAR(50) NOT NULL,
+  docto VARCHAR(20) NOT NULL
+);
+
+-- Inicia TRANSAÇÃO
+
+START TRANSACTION;
+
+-- Insere registros
+
+INSERT INTO cadastros VALUES ('Andre','12341244');
+INSERT INTO cadastros VALUES ('Andre','12341248');
+INSERT INTO cadastros VALUES ('Andre','12341246');
+
+-- Retornando a tabela para o estado anterior do begin transaction
+
+ROLLBACK
+
+-- Efetiva as informações na tabalea do banco de dados
+
+COMMIT;
+
+DELETE * FROM cadastro
+
+SELECT * FROM cadastro
+
+-- Iniciando transação
+
+START TRANSACTION;
+
+-- Inserindo registros
+
+INSERT INTO cadastros VALUES ('Andre','12341244');
+SAVEPOINT P1;
+INSERT INTO cadastros VALUES ('Andre','12341248');
+SAVEPOINT P2;
+INSERT INTO cadastros VALUES ('Andre','12341246');
+SAVEPOINT P3;
+
+-- Retornando a tabela para o estado anterior do begin transaction
+ROLLBACK TO SAVEPOINT P2;
+
+-- Efetiva as informações na tabalea do banco de dados
+
+COMMIT;
