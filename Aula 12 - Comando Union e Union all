@@ -1,0 +1,73 @@
+-- Simulando erro UNION
+
+SELECT '1','1','ABC'
+UNION
+SELECT 'A',2
+
+-- Exemplo de UNION ALL
+
+SELECT 'A' AS campo1,'B' AS compo2
+UNION ALL
+SELECT 'A' AS campo3,'B' AS campo4;
+
+-- Exmplo UNION
+
+SELECT 'A' AS campo1,'B' AS campo2
+UNION
+SELECT 'A' AS campo3,'B' AS campo4;
+
+-- Exemplo usando UNION
+
+SELECT ano,estado
+FROM senso
+WHERE ano='2014'
+UNION
+SELECT ano,estado
+FROM senso
+WHERE ano='2013';
+
+-- Exemplo usando UNION
+
+SELECT estado
+FROM senso
+WHERE ano='2014'
+UNION
+SELECT estado
+FROM senso
+WHERE ano='2013';
+
+-- Exemplo usando UNION ALL
+
+SELECT ano,estado
+FROM senso
+WHERE ano='2014'
+UNION ALL
+SELECT ano,estado
+FROM senso
+WHERE ano='2013';
+
+-- Exemplo usando UNION
+
+SELECT ano,estado,nome_mun,populacao
+FROM senso
+WHERE ano='2014'
+AND cod_uf='11'
+UNION
+SELECT ano,estado,nome_mun,populacao
+FROM senso
+WHERE ano='2013'
+AND cod_uf='11'
+ORDER BY nome_mun,ano;
+
+-- Exemplo usando UNION ALL
+
+SELECT ano,estado,nome_mun,populacao
+FROM senso
+WHERE ano='2014'
+AND cod_uf='11'
+UNION ALL
+SELECT ano,estado,nome_mun,populacao
+FROM senso
+WHERE ano='2013'
+AND cod_uf='11'
+ORDER BY nome_mun,ano;
