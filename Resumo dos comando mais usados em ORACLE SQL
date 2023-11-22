@@ -1,0 +1,57 @@
+DML (Data Manipulation Language):
+SELECT:
+
+Descrição: Recupera dados de uma ou mais tabelas.
+Exemplo: SELECT coluna1, coluna2 FROM tabela WHERE condição;
+INSERT:
+
+Descrição: Insere dados em uma tabela.
+Exemplo: INSERT INTO tabela (coluna1, coluna2) VALUES (valor1, valor2);
+UPDATE:
+
+Descrição: Atualiza dados existentes em uma tabela.
+Exemplo: UPDATE tabela SET coluna1 = novo_valor WHERE condição;
+DELETE:
+
+Descrição: Remove dados de uma tabela.
+Exemplo: DELETE FROM tabela WHERE condição;
+DDL (Data Definition Language):
+CREATE:
+
+Descrição: Cria objetos no banco de dados, como tabelas, índices ou visões.
+Exemplo: CREATE TABLE nome_tabela (coluna1 tipo_dado, coluna2 tipo_dado);
+ALTER:
+
+Descrição: Modifica a estrutura de objetos existentes no banco de dados.
+Exemplo: ALTER TABLE tabela ADD coluna tipo_dado;
+DROP:
+
+Descrição: Remove objetos do banco de dados, como tabelas ou índices.
+Exemplo: DROP TABLE nome_tabela;
+DCL (Data Control Language):
+GRANT:
+
+Descrição: Concede permissões a usuários ou papéis.
+Exemplo: GRANT SELECT ON tabela TO usuario;
+REVOKE:
+
+Descrição: Revoga permissões anteriormente concedidas.
+Exemplo: REVOKE SELECT ON tabela FROM usuario;
+TCL (Transaction Control Language):
+COMMIT:
+
+Descrição: Confirma as alterações feitas desde a última instrução COMMIT.
+Exemplo: COMMIT;
+ROLLBACK:
+
+Descrição: Desfaz as alterações não confirmadas desde a última instrução COMMIT.
+Exemplo: ROLLBACK;
+SAVEPOINT:
+
+Descrição: Define um ponto no qual é possível realizar um ROLLBACK posteriormente.
+Exemplo: SAVEPOINT nome_savepoint;
+ROLLBACK TO SAVEPOINT:
+
+Descrição: Desfaz as alterações até um ponto específico definido por SAVEPOINT.
+Exemplo: ROLLBACK TO SAVEPOINT nome_savepoint;
+Estes são comandos fundamentais no Oracle SQL, agrupados de acordo com suas principais funções. Cada categoria desempenha um papel específico na manipulação, definição, controle e gerenciamento de transações no banco de dados.
