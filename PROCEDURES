@@ -1,0 +1,38 @@
+
+Em bancos de dados, PROCEDURES (procedimentos) são conjuntos de instruções SQL agrupadas em uma unidade lógica e nomeadas. Elas são salvas no banco de dados e podem ser chamadas e executadas por outros programas ou procedimentos armazenados. As PROCEDURES ajudam a modularizar o código, promovendo a reutilização e a manutenção do código. No Oracle SQL, PROCEDURES são um tipo de objeto de banco de dados. Aqui estão cinco exemplos de utilizações de PROCEDURES em Oracle SQL:
+
+1- Atualização de Dados:
+CREATE OR REPLACE PROCEDURE atualizar_salario (p_emp_id NUMBER, p_novo_salario NUMBER) AS
+BEGIN
+    UPDATE funcionarios SET salario = p_novo_salario WHERE emp_id = p_emp_id;
+END;
+
+2- Inserção de Dados:
+CREATE OR REPLACE PROCEDURE inserir_novo_funcionario (p_nome VARCHAR2, p_salario NUMBER) AS
+BEGIN
+    INSERT INTO funcionarios (nome, salario) VALUES (p_nome, p_salario);
+END;
+
+3- Exclusão de Dados:
+CREATE OR REPLACE PROCEDURE excluir_funcionario (p_emp_id NUMBER) AS
+BEGIN
+    DELETE FROM funcionarios WHERE emp_id = p_emp_id;
+END;
+
+4- Recuperação de Dados (Função):
+CREATE OR REPLACE FUNCTION obter_salario (p_emp_id NUMBER) RETURN NUMBER AS
+   v_salario NUMBER;
+BEGIN
+   SELECT salario INTO v_salario FROM funcionarios WHERE emp_id = p_emp_id;
+   RETURN v_salario;
+END;
+
+5- Procedimento com Parâmetros de Saída:
+CREATE OR REPLACE PROCEDURE obter_dados_funcionario (p_emp_id NUMBER, 
+                                                     p_nome OUT VARCHAR2, 
+                                                     p_salario OUT NUMBER) AS
+BEGIN
+    SELECT nome, salario INTO p_nome, p_salario FROM funcionarios WHERE emp_id = p_emp_id;
+END;
+
+Estes são apenas exemplos básicos, e PROCEDURES podem envolver lógica mais complexa, controle de fluxo condicional, loops, e outros recursos de programação PL/SQL. Além disso, PROCEDURES podem ter parâmetros de entrada e saída, permitindo uma maior flexibilidade na interação com o banco de dados.
