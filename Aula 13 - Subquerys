@@ -1,0 +1,88 @@
+/*
+Descobrir todos os atores que fizeram o filme com o seguintes parâmetros:
+filme_id= 1 com title= ACADEMY DINOSAUR conhecendo as estruturas sa tabelas
+dos alvos
+*/
+
+use sakila;
+
+select * from actor;
+select * from film_actor;
+select * from film;
+
+select * from actor
+where actor_id in (select actor_id from film_actor
+where film_id='1');
+
+/*
+Descobrir quais filmes a atriz Penelope Guiness fez usando
+o parêmetro actor_id='1'
+*/
+
+select * from film
+where film_id in (select film_id from film_actor
+where actor_id='1');
+
+/*
+Descobrindo qual filmes a atriz Penelope Guiness fez usando o parêmentro
+actor_id='1' e também usando rating='PG'
+*/
+
+select * from film
+where film_id in (select film_id from film_actor
+where actor_id='1')
+and rating='PG';
+
+/*
+Descobrindo qual filmes a atriz Penelope Guiness fez usando o parêmentro
+NOT IN actor_id='1' e também usando rating='PG'
+*/
+
+select * from film
+where film_id not in (select film_id from film_actor
+where actor_id='1')
+and rating='PG';
+
+/*
+Descobrindo quantas cidades tem dentro de um pais
+e também conhecendo a estrutura das tabelas alvo
+*/
+
+select * from country;
+select * from city;
+
+select a.country_id,a.country,
+(select count(*) from city b
+where a.country_id=b.country_id) as qtda
+from country a;
+
+/*
+Calcula o total da população do pais tabela cidade
+com o SUBSELECT trazer o nome do pais e filtra por línguas,
+conhecendo tabelas
+*/
+
+use world;
+
+select * from city;
+select * from country;
+select * from countrylanguage;
+
+select a.countrycode,sum(a.population)as total_pop,
+(select name from country b where a.countrycode=b.code) as pais
+from city a
+where a.countrycode in (select c.countrycode from countrylanguage c
+where language='Spanish')
+group by a.countrycode;
+
+-- Outra solução para o mesmo problema
+
+select a.countrycode,sum(a.population)as total_pop,
+b.name
+from city a
+inner join country b
+on a.countrycode=b.code
+inner join countrylanguage c
+on a.countrycode=c.countrycode
+where language='Spanish'
+group by a.countrycode,b.name;
